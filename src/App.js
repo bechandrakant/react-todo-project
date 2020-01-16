@@ -8,6 +8,10 @@ function App() {
   const [todos, setTodos] = useState([]);
   const todoNameRef = useRef();
 
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (storedTodos != null) setTodos(storedTodos);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
